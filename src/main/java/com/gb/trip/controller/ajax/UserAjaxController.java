@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gb.trip.dto.ResponseDto;
@@ -35,6 +36,7 @@ public class UserAjaxController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	@PutMapping("/usernick")
+	@ResponseBody
 	public ResponseDto<Integer> updateNickname(@RequestBody User user) { // key=value, x-www-form-urlencoded
 		userService.updateUserNickname(user);
 		// 여기서는 트랜잭션이 종료되기 때문에 DB에 값은 변경이 됐음.

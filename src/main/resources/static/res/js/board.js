@@ -1,3 +1,4 @@
+
 let index = {
 		init: function(){
 			$("#btn-save").on("click", ()=>{ 
@@ -20,7 +21,14 @@ let index = {
 					content: $("#content").val(),
 					
 			};
-			
+			if(data.title == null || data.title == ""){
+				alert('제목을 입력해주세요.');
+				return false;
+			}
+			if(data.content == null || data.content == ""){
+				alert('내용을 입력해주세요.');
+				return false;
+			}			
 			$.ajax({ 
 				type: "POST",
 				url: "/ajax/board",
@@ -64,7 +72,7 @@ let index = {
 				contentType: "application/json; charset=utf-8",
 				dataType: "json"
 			}).done(function(resp){
-				 
+				alert("수정이 완료되었습니다.");
 				location.href='/boardList';
 			}).fail(function(error){
 				alert(JSON.stringify(error));

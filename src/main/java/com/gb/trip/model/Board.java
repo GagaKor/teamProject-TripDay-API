@@ -33,8 +33,7 @@ public class Board {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
 	private int id;
-
-
+	
 	private String title;
 
 	private String content; // 섬머노트 라이브러리 <html>태그가 섞여서 디자인이 됨.

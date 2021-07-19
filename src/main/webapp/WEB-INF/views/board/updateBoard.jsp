@@ -2,23 +2,27 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp"%>
+<script src="${R}/res/js/common.js"></script>
+<%-- <head>
+	<meta name="_csrf" content="${_csrf.token}"/>
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+	<!-- ... -->
+</head>
+<script>
+$(function () {
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) {
+		xhr.setRequestHeader(header, token);
+	});
+	});
 
-<%-- <div class="container">
-
-	<form>
-		<input type="hidden" id="id" value="${board.id}"/>
-		<div class="form-group">
-			<input value="${board.title}" type="text" class="form-control" placeholder="Enter title" id="title">
-		</div>
-
-		<div class="form-group">
-			<textarea class="form-control summernote" rows="5" id="content">${board.content}</textarea>
-		</div>
-	</form>
-	<button id="btn-update" class="btn btn-primary">글수정완료</button>
-</div> --%>
+</script>
+ --%>
 <div class="board_wrap">
 	<form>
+
 		<input type="hidden" id="id" value="${board.id}" />
 		<div class="board_title">
 			<strong>후기 게시판</strong>
@@ -41,7 +45,7 @@
 
 		</div>
 	<div class="bt_wrap">
-	<button id="btn-update" class="bt_css bt_black">수정</button>
+	<button id="btn-update" class="bt_css bt_black" data-confirm-update>수정</button>
 	<a onclick="history.back();" class="bt_css">취소</a>
 	</div>
 	</form>

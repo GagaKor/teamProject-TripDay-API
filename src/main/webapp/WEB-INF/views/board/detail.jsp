@@ -2,8 +2,23 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp"%>
+<%-- <head>
+	<meta name="_csrf" content="${_csrf.token}"/>
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+	<!-- ... -->
+</head>
+<script>
+$(function () {
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) {
+		xhr.setRequestHeader(header, token);
+	});
+	});
 
-
+</script> --%>
+<script src="${R}/res/js/common.js"></script>
 <div class="board_wrap">
 	<div class="board_title">
 		<strong>후기 게시판</strong>
@@ -35,7 +50,7 @@
 		<div style="margin-top: 30px">
 			<c:if test="${board.user.id == principal.user.id}">
 				<a href="/board/${board.id}/updateBoard" class="bt_css bt_black">수정</a>
-				<button id="btn-delete" class="bt_css">삭제</button>
+				<button id="btn-delete" class="bt_css" data-confirm-delete>삭제</button>
 			</c:if>
 			<button class="bt_css" onclick="history.back()">돌아가기</button>
 			<a href="/boardList?${pagination.queryString}" class="bt_css">목록으로</a>
@@ -56,7 +71,7 @@
 					<div class="font-italic" style = "font-size: 14px;">작성자 : ${reply.user.nickname} &nbsp;</div>
 					<c:if test="${reply.user.id eq principal.user.id}">
 						<button onClick="index.replyDelete(${board.id}, ${reply.id})"
-							class="bt_css_small bt_black">삭제</button>
+							class="bt_css_small bt_black" data-confirm-delete>삭제</button>
 					</c:if>
 
 				</div>
@@ -87,4 +102,3 @@
 <script src="${R}/res/js/board.js"></script>
 
 <%@ include file="../layout/footer.jsp"%>
-

@@ -37,11 +37,11 @@ public class UserController {
 	@GetMapping("/login")
 	public String login(Model model, HttpServletRequest request) {
 		// 이전페이지 URL 추출
-
-		String referrer = request.getHeader("Referer");
+		String referrer = request.getHeader("Referer")==null?"http://localhost:8085/":request.getHeader("Referer");
+		if(referrer.equals("http://localhost:8085/register"))
+			referrer = "http://localhost:8085/";
 		request.getSession().setAttribute("prevPage", referrer);
-		System.out.println(referrer);
-		return "user/login";
+		return "user/login"; 
 	}
 
 	@GetMapping("/user/updateUser")

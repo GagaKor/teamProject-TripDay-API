@@ -2,7 +2,33 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="layout/header.jsp"%>
+<%-- <head>
+	<meta name="_csrf" content="${_csrf.token}"/>
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+	<!-- ... -->
+</head>
+<script>
+$(function () {
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) {
+		xhr.setRequestHeader(header, token);
+	});
+	});
 
+</script> --%>
+<script src="${R}/res/js/common.js"></script>
+<script type="text/javascript">
+function check(id){
+	let user = '${principal.user}'
+	if( user == ""){
+		alert("로그인 후 이용해주세요.");
+		return false;
+	}
+	location.href= '/board/'+id;
+}
+</script>
 <h1 id="logo" style="margin-top: 20px; margin-bottom: 20px;">
 	<a href="/list"><img alt="로고" src="res/img/logo.png"></a>
 </h1>
@@ -19,6 +45,7 @@
 	</div>
 	<div style="margin: 20px; margin-left: 900px;">
 		<form action="/board/search" method="GET">
+		
 			<div class="btn-group" role="group" aria-label="Basic example">
 				<input name="keyword" type="text" placeholder="검색어를 입력해주세요">
 				<button class="btn btn-secondary">검색</button>
@@ -46,7 +73,7 @@
 				<div class="clickable" data-url = "/board/${board.id}">
 					<div class="num">${board.id}</div>
 					<div class="title">
-						<a href="/board/${board.id}">${board.title}</a>
+						<a href="javascript:check('${board.id }')" style="text-decoration: none">${board.title}</a>
 					</div>
 					<div class="writer">${board.user.nickname}</div>
 					<div class="date">${board.regDate}</div>

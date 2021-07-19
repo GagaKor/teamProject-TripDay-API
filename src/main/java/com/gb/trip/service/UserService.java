@@ -49,6 +49,12 @@ public class UserService {
             bindingResult.rejectValue("username", null, "사용자 아이디가 중복됩니다.");
             return true;
         }
+        User user2 = userRepository.findByNicknameVaild(userRegistration.getNickname());
+        if (user2 != null) {
+        	bindingResult.rejectValue("nickname", null, "사용자 닉네임이 중복됩니다.");
+        	return true;
+        }
+
         return false;
     }
 
@@ -109,17 +115,15 @@ public class UserService {
 
 	@Transactional
 	public void updateUserNickname(User user) {
-
-		User persistance = userRepository.findById(user.getId()).orElseThrow(()->{
+		User persistance = userRepository.findById(user.getId()).orElseThrow(() -> {
 			return new IllegalArgumentException("회원 찾기 실패");
 		});
 
-		if(userRepository.findByNicknameVaild(user.getNickname()) == null) {
+		if (userRepository.findByNicknameVaild(user.getNickname()) == null) {
 			persistance.setNickname(user.getNickname());
 		} else {
 			throw new IllegalArgumentException("닉네임 중복");
 		}
-
 
 	}
 

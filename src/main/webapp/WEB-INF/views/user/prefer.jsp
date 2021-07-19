@@ -3,6 +3,7 @@
 
 <%@ include file="../layout/header.jsp"%>
 
+
 <div class="container" style="float: left; width: 400px; overflow:hidden; height:auto; margin-left: 10px;">
 	<div class="col-sm-10">
 		<h2>About Me</h2>

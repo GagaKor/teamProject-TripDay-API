@@ -14,7 +14,7 @@ spring:
       
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/gb2?serverTimezone=Asia/Seoul
+    url: jdbc:mariadb://localhost:3550/gb?serverTimezone=Asia/Seoul
     username: gb
     password: gb
     

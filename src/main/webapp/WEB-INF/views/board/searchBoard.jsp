@@ -2,7 +2,22 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp"%>
+<%-- <head>
+	<meta name="_csrf" content="${_csrf.token}"/>
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+	<!-- ... -->
+</head>
+<script>
+$(function () {
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+	$(document).ajaxSend(function(e, xhr, options) {
+		xhr.setRequestHeader(header, token);
+	});
+	});
 
+</script> --%>
 <h1 id="logo" style="margin-top: 20px; margin-bottom: 20px;">
 	<a href="/list"><img alt="로고" src="${R}/res/img/logo.png"></a>
 </h1>

@@ -12,11 +12,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <title>날씨</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 <link rel="stylesheet" href="${R}/res/boardcss.css">
-<%-- <script src="${R}/res/js/common.js"></script> --%>
 <link rel="stylesheet" href="${R}/res/trip.css">
 <link rel="stylesheet" href="${R}/res/common.css">
 <link rel="stylesheet"
@@ -114,5 +116,6 @@
 			</c:choose>
 
 		</div>
+		
 	</nav>
 	<br />
