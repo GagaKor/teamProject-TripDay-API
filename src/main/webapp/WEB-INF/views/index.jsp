@@ -37,7 +37,7 @@
 								<li><a href="/oauth2/authorization/google" class="icon brands fa-google"><span class="label">Google</span></a></li>
 								</c:if>
 								<li><a href="/boardList" class="icon brands fa-stack-exchange"><span class="label">Board</span></a></li>
-								<li><a href="자기 깃허브 링크 넣으세요." class="icon brands fa-github"><span class="label">GibHub</span></a></li>
+								<li><a href="https://github.com/GagaKor/teamProject-TripDay-API" class="icon brands fa-github"><span class="label">GibHub</span></a></li>
 								<sec:authorize access="isAuthenticated()">
 <li><a href="/logout_processing" class="icon far fa-address-card"><span class="label">Logout</span></a></li>
 </sec:authorize>
