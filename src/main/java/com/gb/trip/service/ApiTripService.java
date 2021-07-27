@@ -5,20 +5,67 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gb.trip.model.Detail;
 import com.gb.trip.model.Intro;
+import com.gb.trip.model.Place;
 
 @Service
 public class ApiTripService{
-
-
+	
+	public List<Place> getPlaceList(Map<String, String> map){
+		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=jiMuTvx6cLYWRrR2EKwGefsF3O966xEpgeU0UcEsuAtfzmtXVsG8pHw3JYK4uSUv6kgWiHX77rZDdjMnNaWRXQ=="
+				+ "&pageNo=1"//+map.get("pageNo")
+				+ "&numOfRows=10"//+map.get("numOfPage")
+				+ "&MobileApp=test"
+				+ "&MobileOS=ETC"
+				+ "&arrange=p"//+map.get("arrange")
+				+ "&contentTypeId=12"
+				+ "&areaCode="//+map.get("areacode")
+				+ "&sigunguCode="//+map.get("sigunguCode")
+				+ "&listYN=Y"
+				+ "&_type=json";
+		
+		RestTemplate rt = new RestTemplate();
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+		HttpEntity<MultiValueMap<String, String>> placeRequest = new HttpEntity<>(header);
+		ResponseEntity<String> res = rt.exchange(url, HttpMethod.GET, placeRequest, String.class);
+	
+		ObjectMapper objMapper = new ObjectMapper();
+		List<Place> list = new ArrayList<Place>();
+		objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		
+		
+		try {
+			JsonNode json = objMapper.readTree(res.getBody());					
+			list = Arrays.asList(objMapper.readValue(json.findValue("item").toString(), Place[].class));
+			
+		}catch (JsonMappingException e) {
+			e.getStackTrace();
+		}catch (JsonProcessingException e) {
+			e.getStackTrace();
+		}
+		return list;
+	}
+	
 	public int getCount(String area1, String area2) throws IOException {
 		StringBuffer result = new StringBuffer();
 

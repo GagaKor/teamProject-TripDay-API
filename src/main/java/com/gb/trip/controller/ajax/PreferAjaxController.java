@@ -1,7 +1,5 @@
 package com.gb.trip.controller.ajax;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gb.trip.config.MyUserDetails;
@@ -29,6 +26,7 @@ public class PreferAjaxController {
 	
 	@Autowired
 	private PreferService preferService;
+	
 	
 	@PostMapping("/prefer")
 	public ResponseDto<Integer> save(@RequestBody Prefer prefer,
