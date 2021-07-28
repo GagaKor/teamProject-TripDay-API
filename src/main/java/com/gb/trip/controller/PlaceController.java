@@ -9,9 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.gb.trip.dto.Detail;
 import com.gb.trip.dto.Intro;
 import com.gb.trip.dto.Page;
-import com.gb.trip.model.Detail;
 import com.gb.trip.service.ApiTripService;
 
 @Controller

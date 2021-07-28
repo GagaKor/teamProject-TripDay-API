@@ -14,9 +14,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gb.trip.dto.Detail;
 import com.gb.trip.dto.Intro;
 import com.gb.trip.dto.Place;
-import com.gb.trip.model.Detail;
 
 @Service
 public class ApiTripService {

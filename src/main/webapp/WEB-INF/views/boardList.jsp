@@ -70,7 +70,7 @@ function check(id){
 				</div>
 			</div> --%>
 			
-				<div class="clickable" data-url = "/board/${board.id}">
+				<div class="clickable">
 					<div class="num">${board.id}</div>
 					<div class="title">
 						<a href="javascript:check('${board.id }')" style="text-decoration: none">${board.title}</a>

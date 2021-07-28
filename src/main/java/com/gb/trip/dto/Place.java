@@ -7,42 +7,34 @@ import lombok.Data;
 @Data
 public class Place {
 	@JsonProperty
-	public String addr1;
+	private String addr1;
 	@JsonProperty
-	public Integer areacode;
+	private Integer areacode;
 	@JsonProperty
-	public String cat1;
+	private String cat1;
 	@JsonProperty
-	public String cat2;
+	private Integer contentid;
 	@JsonProperty
-	public String cat3;
+	private Integer contenttypeid;
 	@JsonProperty
-	public Integer contentid;
+	private Long createdtime;
 	@JsonProperty
-	public Integer contenttypeid;
+	private String firstimage;
 	@JsonProperty
-	public Long createdtime;
+	private String firstimage2;
 	@JsonProperty
-	public String firstimage;
+	private String mapx;
 	@JsonProperty
-	public String firstimage2;
+	private String mapy;
 	@JsonProperty
-	public String mapx;
+	private Integer readcount;
 	@JsonProperty
-	public String mapy;
+	private Integer sigungucode;
 	@JsonProperty
-	public Integer mlevel;
+	private String title;
 	@JsonProperty
-	public Long modifiedtime;
+	private Integer zipcode;
 	@JsonProperty
-	public Integer readcount;
-	@JsonProperty
-	public Integer sigungucode;
-	@JsonProperty
-	public String title;
-	@JsonProperty
-	public Integer zipcode;
-	@JsonProperty
-	public String addr2;
+	private String addr2;
 
 }
