@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gb.trip.dto.Item;
 import com.gb.trip.model.Area;
-import com.gb.trip.model.Item;
 import com.gb.trip.service.WeatherService;
 
 /*

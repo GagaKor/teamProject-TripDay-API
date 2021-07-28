@@ -9,9 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.gb.trip.dto.Intro;
+import com.gb.trip.dto.Page;
 import com.gb.trip.model.Detail;
-import com.gb.trip.model.Intro;
-import com.gb.trip.model.Page;
 import com.gb.trip.service.ApiTripService;
 
 @Controller
@@ -26,7 +26,7 @@ public class PlaceController {
 			@RequestParam(value = "sigungucode", required = false, defaultValue = "")String sigungucode,
 			@RequestParam(value = "arrange", required = false, defaultValue = "P")String arrange,
 			@RequestParam(value = "numOfPage", required = false, defaultValue = "10")String numOfPage,			
-			@RequestParam(value = "s_date", required = false, defaultValue = "20")String s_date			
+			@RequestParam(value = "s_date", required = false, defaultValue = "")String s_date			
 	) throws IOException {
 		int totalCnt = apiService.getCount(areacode, sigungucode);
 		Page page = new Page(currentPage,Integer.parseInt(numOfPage), totalCnt);

@@ -1,4 +1,5 @@
-package com.gb.trip.model;
+package com.gb.trip.dto;
+
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

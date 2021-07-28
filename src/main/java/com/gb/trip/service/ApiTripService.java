@@ -23,41 +23,37 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gb.trip.dto.Intro;
+import com.gb.trip.dto.Place;
 import com.gb.trip.model.Detail;
-import com.gb.trip.model.Intro;
-import com.gb.trip.model.Place;
 
 @Service
 public class ApiTripService{
 	
 	public List<Place> getPlaceList(Map<String, String> map){
 		String url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=jiMuTvx6cLYWRrR2EKwGefsF3O966xEpgeU0UcEsuAtfzmtXVsG8pHw3JYK4uSUv6kgWiHX77rZDdjMnNaWRXQ=="
-				+ "&pageNo=1"//+map.get("pageNo")
-				+ "&numOfRows=10"//+map.get("numOfPage")
+				+ "&pageNo="+map.get("pageNo")
+				+ "&numOfRows="+map.get("numOfPage")
 				+ "&MobileApp=test"
 				+ "&MobileOS=ETC"
-				+ "&arrange=p"//+map.get("arrange")
+				+ "&arrange="+map.get("arrange")
 				+ "&contentTypeId=12"
-				+ "&areaCode="//+map.get("areacode")
-				+ "&sigunguCode="//+map.get("sigunguCode")
+				+ "&areaCode="+map.get("areacode")
+				+ "&sigunguCode="+map.get("sigunguCode")
 				+ "&listYN=Y"
 				+ "&_type=json";
 		
 		RestTemplate rt = new RestTemplate();
-		HttpHeaders header = new HttpHeaders();
-		header.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-		HttpEntity<MultiValueMap<String, String>> placeRequest = new HttpEntity<>(header);
-		ResponseEntity<String> res = rt.exchange(url, HttpMethod.GET, placeRequest, String.class);
-	
+
 		ObjectMapper objMapper = new ObjectMapper();
 		List<Place> list = new ArrayList<Place>();
 		objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		
-		
+		String rs = rt.getForObject(url, String.class);
+
 		try {
-			JsonNode json = objMapper.readTree(res.getBody());					
+			JsonNode json = objMapper.readTree(rs);					
 			list = Arrays.asList(objMapper.readValue(json.findValue("item").toString(), Place[].class));
-			
 		}catch (JsonMappingException e) {
 			e.getStackTrace();
 		}catch (JsonProcessingException e) {

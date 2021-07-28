@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.gb.trip.config.MyUserDetails;
+import com.gb.trip.dto.Pagination;
 import com.gb.trip.model.Board;
-import com.gb.trip.model.Pagination;
 import com.gb.trip.service.BoardService;
 
 @Controller

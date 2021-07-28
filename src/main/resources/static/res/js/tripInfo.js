@@ -103,7 +103,7 @@ let index = {
 			areacode: $("#areacode").val(),
 			s_date: $("#s_date-detail").val()
 		};
-		if (data.s_date == 20) {
+		if (data.s_date == "") {
 			alert('날짜를 선택해 주세요.');
 			return false;
 		}

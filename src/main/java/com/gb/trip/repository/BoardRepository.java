@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import com.gb.trip.dto.Pagination;
 import com.gb.trip.model.Board;
-import com.gb.trip.model.Pagination;
 
 public interface BoardRepository extends JpaRepository<Board, Integer>{
 

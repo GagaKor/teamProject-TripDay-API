@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gb.trip.model.Item;
-import com.gb.trip.model.Items;
+import com.gb.trip.dto.Item;
+import com.gb.trip.dto.Items;
 
 
 @Service
@@ -58,8 +58,7 @@ public class WeatherService {
          String numOfRows = "10";
          String pageNo = "1";
          String tmFctime = tmFc+"0600";
-         System.out.println(regId);
-         System.out.println(tmFctime);
+ 
          URL url = new URL("http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst" + "?serviceKey="
                + serviceKey + "&numOfRows=" + numOfRows + "&pageNo=" + pageNo + "&regId=" + regId + "&tmFc=" + tmFctime
                + "&dataType=JSON");

@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gb.trip.dto.Pagination;
 import com.gb.trip.dto.ReplySaveRequestDto;
 import com.gb.trip.model.Board;
-import com.gb.trip.model.Pagination;
 import com.gb.trip.model.User;
 import com.gb.trip.repository.BoardRepository;
 import com.gb.trip.repository.ReplyRepository;

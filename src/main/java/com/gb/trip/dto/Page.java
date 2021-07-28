@@ -1,5 +1,5 @@
 
-package com.gb.trip.model;
+package com.gb.trip.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

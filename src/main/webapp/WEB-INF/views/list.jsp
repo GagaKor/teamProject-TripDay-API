@@ -14,32 +14,31 @@
 	
 	function tripList(pageNo,areacode,sigunguCode, arrange, numOfPage, s_date) {
 		var list = new Array();
+		const data= {
+				pageNo : pageNo,
+				areacode : areacode,
+				sigunguCode : sigunguCode,
+				arrange : arrange,
+				numOfPage: numOfPage,
+				s_date : s_date
+		}
+		
 		//관광지 api
 		$.ajax({
-					url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?serviceKey=jiMuTvx6cLYWRrR2EKwGefsF3O966xEpgeU0UcEsuAtfzmtXVsG8pHw3JYK4uSUv6kgWiHX77rZDdjMnNaWRXQ%3D%3D'
-							+ '&pageNo='+pageNo
-							+ '&numOfRows='+numOfPage
-							+ '&MobileApp=test'
-							+ '&MobileOS=ETC'
-							+ '&arrange='+arrange
-							+ '&contentTypeId=12'
-							+ '&areaCode='+areacode
-							+ '&sigunguCode='+sigunguCode
-							+ '&listYN=Y'
-							+ '&_type=json',
+					url : 'placeList',
 					type : 'GET',
 					dataType : 'json',
+					data : data,
 					error : function(xhr, status, msg) {
 						alert("상태값 :" + status + " Http에러메시지 :" + msg);
 					},
 					success : function(response) {
-						response = response.response.body.items.item;
 						tripListResult(response);
 						weather(response);
 					}
 				});
 		function weather(result){
-		if(s_date !='' && s_date != "20"){
+		if(s_date !=''){
 			
 			var cnt = 0;
 			for(var i=0; i<result.length;i++){
@@ -271,7 +270,6 @@
 				<div>
 					<select name="arrange" id="arrange" title="정렬항목 선택">
 						<option value="R" >최신순</option>
-						<option value="O">제목순</option>
 						<option value="P" selected>인기순</option>
 					</select> <input type="image" id="arrangeView" src="/res/img/show.png" alt="보기" style="width: 30px;"> <select
 						name="numOfPage" id="numOfPage" title="정렬개수 선택">
