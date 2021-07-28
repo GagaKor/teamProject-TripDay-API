@@ -99,22 +99,23 @@
 	}
 	//검색 조건
 	function areaCode(code, vald) {
+		if(code==8 || code==""){
+			$("#sigungucode").empty();
+			$("#sigungucode").append($('<option value="">시군구 선택</option>'));
+			return;
+		}
+		data={
+			code : code
+		};
 		$.ajax({
-					url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?serviceKey=jiMuTvx6cLYWRrR2EKwGefsF3O966xEpgeU0UcEsuAtfzmtXVsG8pHw3JYK4uSUv6kgWiHX77rZDdjMnNaWRXQ%3D%3D'
-							+ '&numOfRows=30'
-							+ '&pageNo=1'
-							+ '&MobileOS=ETC'
-							+ '&MobileApp=AppTest'
-							+ '&areaCode='+code
-							+ '&sigungucode='
-							+ '&_type=json',
+					url : 'placeSearch',
 					type : 'GET',
 					dataType : 'json',
+					data : data,
 					error : function(xhr, status, msg) {
 						alert("상태값 :" + status + " Http에러메시지 :" + msg);
 					},
 					success : function(response) {
-						response = response.response.body.items.item;
 						locationCode(response, vald);
 					}
 				});
